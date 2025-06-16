@@ -1,4 +1,4 @@
-3# 🔗 URL Shortener – Node.js + MongoDB Based Application
+# 🔗 URL Shortener – Node.js + MongoDB Based Application
 
 This project is a **URL shortening service** similar to Bitly or TinyURL, developed using **Node.js**, **Express.js**, **MongoDB**, and **EJS**. It allows users to convert long, complex URLs into short, easy-to-share links that redirect to the original URL.
 
