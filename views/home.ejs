@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>URL Shortener</title>
+    <link rel="icon" href="https://img.icons8.com/ios-filled/50/link.png" type="image/png" />
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-K2z4eQdM2L6a3+zG4aJwMSpqBKMf1WRUVJ3JkkP6t8KZzj9FeYkPflvMryMfHe+2mB2xENLx7U6bB9TAY4K3DQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
       body {
         margin: 0;
@@ -76,6 +85,29 @@
         color: #ffffff;
         text-decoration: underline;
       }
+
+      .footer {
+        margin-top: 40px;
+        font-size: 0.9rem;
+        color: #ddd;
+      }
+
+      .footer a {
+        color: #ffd;
+        margin: 0 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .footer a:hover {
+        color: #fff;
+      }
+
+      .footer i {
+        font-size: 1rem;
+      }
     </style>
   </head>
   <body>
@@ -101,6 +133,19 @@
         />
         <button type="submit">Shorten It</button>
       </form>
+
+      <div class="footer">
+        Developed by <strong>Rupendra Gangwar</strong> |
+        <a href="https://github.com/Rupendra0" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://linkedin.com/rupendra-gangwar" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="mailto:rupendragangwar07@gmail.com">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+      </div>
     </div>
   </body>
 </html>
