@@ -27,22 +27,31 @@ app.use(express.urlencoded({extended: false}));
 app.use('/url' , urlRoute);
 app.use("/" , staticRoute);
 //this route will get the generated url and redirect it to original url
-app.get("/:shortId" , async (req , res) => {
-    //this will fetch parameter named as shortId from json
+app.get("/:shortId", async (req, res) => {
+  try {
     const shortId = req.params.shortId;
+
     const entry = await URL.findOneAndUpdate(
-        {
-            shortId,
+      { shortId },
+      {
+        $push: {
+          visitHistory: {
+            timestamp: Date.now(),
+          },
         },
-        {
-            $push: {
-                visitHistory: {
-                    timestamp: Date.now(),
-                },
-            },
-        }
+      }
     );
-    res.redirect(data.redirectURL);
+
+    if (!entry) {
+      return res.status(404).send("Short URL not found");
+    }
+
+    res.redirect(entry.redirectURL);
+  } catch (err) {
+    console.error("Redirect Error:", err);
+    res.status(500).send("Internal Server Error");
+  }
 });
+
 
 app.listen(PORT , () => console.log(`Server started at PORT: ${PORT}`));
