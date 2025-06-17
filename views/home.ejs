@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>URL Shortener</title>
     <link rel="icon" href="https://img.icons8.com/ios-filled/50/link.png" type="image/png" />
+    
     <!-- Font Awesome CDN -->
     <link
       rel="stylesheet"
@@ -13,7 +14,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         padding: 0;
@@ -25,27 +31,30 @@
         justify-content: center;
         min-height: 100vh;
         color: white;
+        padding: 20px;
       }
 
       .container {
         background-color: rgba(255, 255, 255, 0.1);
-        padding: 40px;
+        padding: 40px 30px;
         border-radius: 16px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        width: 90%;
+        width: 100%;
         max-width: 500px;
         text-align: center;
       }
 
       h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         margin-bottom: 20px;
+        word-wrap: break-word;
       }
 
       label {
         font-size: 1.1rem;
         margin-bottom: 10px;
         display: block;
+        text-align: left;
       }
 
       input[type="text"] {
@@ -90,15 +99,17 @@
         margin-top: 40px;
         font-size: 0.9rem;
         color: #ddd;
+        text-align: center;
       }
 
       .footer a {
-        color: #ffd;
+        color: #ffe082;
         margin: 0 10px;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
-        gap: 5px;
+        gap: 6px;
+        font-size: 0.95rem;
       }
 
       .footer a:hover {
@@ -108,8 +119,29 @@
       .footer i {
         font-size: 1rem;
       }
+
+      @media (max-width: 500px) {
+        .container {
+          padding: 25px 20px;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        input[type="text"],
+        button {
+          font-size: 0.95rem;
+        }
+
+        .footer a {
+          display: block;
+          margin: 8px 0;
+        }
+      }
     </style>
   </head>
+
   <body>
     <div class="container">
       <h1>🔗 URL Shortener</h1>
@@ -127,6 +159,7 @@
         <label for="url">Enter a long URL</label>
         <input
           type="text"
+          id="url"
           name="url"
           placeholder="https://example.com"
           required
