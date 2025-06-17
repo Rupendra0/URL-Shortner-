@@ -10,7 +10,7 @@ const URL = require("./models/url")
 const app = express();
 const PORT = process.env.PORT  || 8000;
 
-connectToMongoose("process.env.MONGO-URL")
+connectToMongoose("mongodb+srv://vercel-admin-user:<db_password>@url-shortener01.pjk6o5p.mongodb.net/?retryWrites=true&w=majority&appName=URL-Shortener01")
 .then(() => console.log("Mongodb connected")
 );
 
