@@ -86,7 +86,7 @@
         <div class="output">
           Your short URL: <br />
           <a href="/<%= id %>" target="_blank">
-            <%= request.headers.host %>/<%= id %>
+            <%= req.headers.host %>/<%= id %>
           </a>
         </div>
       <% } %>
