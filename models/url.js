@@ -1,5 +1,3 @@
-//this file is for models or structure for database
-
 const mongoose = require("mongoose");
 
 const urlSchema = new mongoose.Schema(
@@ -13,11 +11,15 @@ const urlSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    visitHistory: [{ timestamp: { type: Number } }],
+    visitHistory: [
+      {
+        timestamp: { type: Number }, // or `type: Date, default: Date.now` if preferred
+      },
+    ],
   },
   { timestamps: true }
 );
 
-const URL = mongoose.model("url", urlSchema);
+const URL = mongoose.model("URL", urlSchema); // Capitalized model name for clarity
 
 module.exports = URL;
