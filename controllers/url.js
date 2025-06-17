@@ -1,36 +1,49 @@
-//this file conatins control over routes(POST)or http methods requests and responses
-
 const shortid = require("shortid");
 const URL = require("../models/url");
 
-//thid function will hanldle generation of shortid and its visit history
+// Controller to handle URL shortening
 async function handleGenerateNewShortURL(req, res) {
   const body = req.body;
-  //when there is no url entered
-  if (!body.url) return res.status(400).json({ error: "url is required" });
-  const shortID = shortid();
-  await URL.create({
-    shortId: shortID,
-    redirectURL: body.url,
-    visitHistory: [],
-  });
 
-  return res.render('home' , {
-    id: shortID,
-  })
+  if (!body.url) {
+    return res.status(400).json({ error: "URL is required" });
+  }
+
+  const shortID = shortid();
+
+  try {
+    await URL.create({
+      shortId: shortID,
+      redirectURL: body.url,
+      visitHistory: [],
+    });
+
+    return res.render("home", { id: shortID });
+  } catch (err) {
+    console.error("Error creating short URL:", err);
+    return res.status(500).json({ error: "Internal server error" });
+  }
 }
 
-//this is controller to analytics route in index.js file
+// Controller to get analytics for a short URL
 async function handleGetAnalytics(req, res) {
-  //Query to db to fetch shortID from json
   const shortId = req.params.shortId;
-  //convert it to analytics 
-  const result = await URL.findOne({ shortId });
-  //this will fetched on get rq in Postman
-  return res.json({
-    totalClicks: result.visitHistory.length,
-    analytics: result.visitHistory,
-  });
+
+  try {
+    const result = await URL.findOne({ shortId });
+
+    if (!result) {
+      return res.status(404).json({ error: "Short URL not found" });
+    }
+
+    return res.json({
+      totalClicks: result.visitHistory.length,
+      analytics: result.visitHistory,
+    });
+  } catch (err) {
+    console.error("Error fetching analytics:", err);
+    return res.status(500).json({ error: "Internal server error" });
+  }
 }
 
 module.exports = {
