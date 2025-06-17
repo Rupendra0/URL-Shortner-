@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const {connectToMongoose} = require("./connect");
@@ -7,9 +8,9 @@ const URL = require("./models/url")
 
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT  || 8000;
 
-connectToMongoose("mongodb://localhost:27017/short-url")
+connectToMongoose("process.env.MONGO-URL")
 .then(() => console.log("Mongodb connected")
 );
 
