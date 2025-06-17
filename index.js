@@ -8,7 +8,7 @@ const URL = require("./models/url")
 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 connectToMongoose(process.env.MONGODB_URI)
 .then(() => console.log("Mongodb connected")
