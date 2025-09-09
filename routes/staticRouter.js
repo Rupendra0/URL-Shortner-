@@ -10,6 +10,8 @@ router.get("/", (req, res) => {
       });
     }
     return res.render("home");
+  } catch (err) {
+    res.status(500).send("Internal Server Error");
   }
 });
 
