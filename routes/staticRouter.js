@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
+  res.status(200).json({"message" : "Hey from Backend of URL-Shortner" , "Server_Health" : "Excellent"});
+});
+router.get("/home", (req, res) => {
   try {
-    res.render("home" , {
-      message: "Hey from Backend",
-      health: "Excellent"
+    res.render("home");
     });
   } catch (err) {
     console.error("Error rendering home page:", err);
