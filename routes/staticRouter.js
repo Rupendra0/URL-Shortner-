@@ -5,7 +5,7 @@ router.get("/", (req, res) => {
   try {
     if (req.accepts("json")) {
       return res.status(200).json({
-        message: "Hey from Backend of Saathi-trust",
+        message: "Hey from Backend of URL-Shortner",
         apiStatus: "Healthy"
       });
     }
