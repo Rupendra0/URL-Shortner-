@@ -7,7 +7,6 @@ router.get("/", (req, res) => {
 router.get("/home", (req, res) => {
   try {
     res.render("home");
-    });
   } catch (err) {
     console.error("Error rendering home page:", err);
     res.status(500).send("Internal Server Error");
